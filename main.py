@@ -101,7 +101,7 @@ def callback():
 
 #@handler.add(MessageEvent, message=TextMessage)
 #def handler_message(event):
- def handler_message(string):
+def handler_message(string):
      line_bot_api.reply_message(
          event.reply_token,
          TextSendMessage(text=string))
