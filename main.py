@@ -15,7 +15,7 @@ from linebot.models import(
 import os
 import requests
 import json
-from StringIO import StringIO
+import io
 from PIL import Image
 
 app = Flask(__name__)
@@ -74,7 +74,7 @@ def getImageLine(id):
     result = requests.get(line_url, headers=header)
 
     # 画像の保存
-    i = Image.open(StringIO(result.content))
+    i = Image.open(io.StringIO(result.content))
     filename = '/tmp/' + id + '.jpg'
     i.save(filename)
 
