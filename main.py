@@ -45,7 +45,7 @@ def root_post():
         if event['type'] == 'message':
             if event['message']['type'] == 'image':
                 msg = getImageLine(event['message']['id'])
-                #lineReply(event, msg)
+                lineReply(event, msg)
 
     return '', 200, {}
 
@@ -59,7 +59,7 @@ def lineReply(event, message):
             "text": message
         }]
     }
-    
+
     #LineBotのエンドポイントに送信
     response = requests.post(
         LINE_API_ENDPOINT, headers=header, data=json.dumps(payload))
