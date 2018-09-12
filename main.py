@@ -13,6 +13,10 @@ from linebot.models import(
 )
 
 import os
+import requests
+import json
+from io import StringIO
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -23,9 +27,61 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-@app.route("/")
+#####
+@app.route("/hello")
 def hello_world():
     return "hello world!"
+
+#####
+header = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
+}
+
+@app.route("/", methods=['POST'])
+def root_post():
+
+    for event in request.json['events']:
+        if event['type'] == 'message':
+            if event['message']['type'] == 'image':
+                msg = getImageLine(event['message']['id'])
+
+                lineReply(event, msg)
+
+    print msg
+    return '', 200, {}
+
+#指定されたメッセージで返送する
+def lineReply(event, message):
+
+    payload = {
+        'replyToken': event['replyToken'],
+        'messages': [{
+            "type": "text",
+            "text": message
+        }]
+    }
+
+    #LineBotのエンドポイントに送信
+    response = requests.post(
+        LINE_API_ENDPOINT, headers=header, data=json.dumps(payload))
+
+#LINEから画像データを取得
+def getImageLine(id):
+
+    line_url = 'https://api.line.me/v2/bot/message/' + id + '/content/'
+
+    # 画像の取得
+    result = requests.get(line_url, headers=header)
+
+    # 画像の保存
+    i = Image.open(io.StringIO(result.content))
+    filename = '/tmp/' + id + '.jpg'
+    i.save(filename)
+
+    return MessageEvent
+
+#####
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -46,10 +102,15 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handler_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)
-    )
+
+    if event['message']['type'] == 'image':
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=filename))
+    else:
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=event.message.text))
 
 if __name__ == "__main__":
 #    app.run()
