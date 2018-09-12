@@ -16,11 +16,14 @@ import os
 import requests
 import json
 import io
+from io import BytesIO
 from PIL import Image
+
+import settings
+from vision import get_text_by_ms
 
 app = Flask(__name__)
 
-#環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
@@ -37,47 +40,6 @@ header = {
     "Content-Type": "application/json",
     "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
 }
-
-@app.route("/", methods=['POST'])
-def root_post():
-
-    for event in request.json['events']:
-        if event['type'] == 'message':
-            if event['message']['type'] == 'image':
-                msg = getImageLine(event['message']['id'])
-                lineReply(event, msg)
-
-    return '', 200, {}
-
-#指定されたメッセージで返送する
-def lineReply(event, message):
-
-    payload = {
-        'replyToken': event['replyToken'],
-        'messages': [{
-            "type": "text",
-            "text": message
-        }]
-    }
-
-    #LineBotのエンドポイントに送信
-    response = requests.post(
-        LINE_API_ENDPOINT, headers=header, data=json.dumps(payload))
-
-#LINEから画像データを取得
-def getImageLine(id):
-
-    line_url = 'https://api.line.me/v2/bot/message/' + id + '/content/'
-
-    # 画像の取得
-    result = requests.get(line_url, headers=header)
-
-    # 画像の保存
-    i = Image.open(io.StringIO(result.content))
-    filename = '/tmp/' + id + '.jpg'
-    i.save(filename)
-
-    return handler_message(filename)
 
 #####
 
@@ -98,19 +60,39 @@ def callback():
 
     return 'OK'
 
-#@handler.add(MessageEvent, message=TextMessage)
-#def handler_message(event):
-def handler_message(string):
+@handler.add(MessageEvent, message=TextMessage)
+def handler_message(event):
      line_bot_api.reply_message(
          event.reply_token,
-         TextSendMessage(text=string))
+         TextSendMessage(text=event.message.text))
 
-"""
-    else:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text))
-"""
+@handler.add(MessageEvent, message=ImageMessage)
+def handle_image(event):
+    print("handle_image:", event)
+
+    message_id = event.message.id
+    message_content = line_bot_api.get_message_content(message_id)
+
+    image = BytesIO(message_content.content)
+
+    try:
+        image_text = get_text_by_ms(image=image)
+
+        messages = [
+            TextSendMessage(text=image_text),
+        ]
+
+        reply_message(event, messages)
+
+    except Exception as e:
+        reply_message(event, TextSendMessage(text='エラーが発生しました'))
+
+def reply_message(event, messages):
+    line_bot_api.reply_message(
+        event.reply_token,
+        messages=messages,
+    )
+
 if __name__ == "__main__":
 #    app.run()
     port = int(os.getenv("PORT", 5000))
