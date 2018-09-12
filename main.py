@@ -48,7 +48,6 @@ def root_post():
 
                 lineReply(event, msg)
 
-    print(msg)
     return '', 200, {}
 
 #指定されたメッセージで返送する
@@ -79,7 +78,7 @@ def getImageLine(id):
     filename = '/tmp/' + id + '.jpg'
     i.save(filename)
 
-    return MessageEvent
+    return handler_message(filename)
 
 #####
 
@@ -100,18 +99,19 @@ def callback():
 
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
-def handler_message(event):
+#@handler.add(MessageEvent, message=TextMessage)
+#def handler_message(event):
+ def handler_message(string):
+     line_bot_api.reply_message(
+         event.reply_token,
+         TextSendMessage(text=string))
 
-    if event['message']['type'] == 'image':
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=filename))
+"""
     else:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text))
-
+"""
 if __name__ == "__main__":
 #    app.run()
     port = int(os.getenv("PORT", 5000))
