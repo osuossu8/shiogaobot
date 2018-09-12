@@ -48,7 +48,7 @@ def root_post():
 
                 lineReply(event, msg)
 
-    print msg
+    print(msg)
     return '', 200, {}
 
 #指定されたメッセージで返送する
