@@ -9,7 +9,7 @@ from linebot.exceptions import(
 )
 
 from linebot.models import(
-    MessageEvent, TextMessage, TextSendMessage,
+    ImageMessage, MessageEvent, TextMessage, TextSendMessage,
 )
 
 import os
