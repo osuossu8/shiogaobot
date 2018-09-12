@@ -55,8 +55,6 @@ if status != 200:
         print(status, data)
         return text
 
-    text = "" #data
-
     if len(text) == 0:
         text += '文字が検出できませんでした'
 
