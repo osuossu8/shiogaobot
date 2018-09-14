@@ -24,8 +24,6 @@ from vision import get_text_by_ms, detect_who
 
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
-matplotlib.use('Agg')
 from keras.models import load_model
 
 app = Flask(__name__)

@@ -2,8 +2,6 @@ import requests
 import settings
 import os
 import numpy as np
-import matplotlib.pyplot as plt
-matplotlib.use('Agg')
 
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
