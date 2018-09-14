@@ -1,6 +1,8 @@
 import requests
 import settings
 import os
+import numpy as np
+import matplotlib.pyplot as plt
 
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
@@ -63,5 +65,24 @@ def get_text_by_ms(image_url=None, image=None):
     print('text:', text)
     return text
 
+#####
+
+def detect_who(img=None):
+    #予測
+    face=""
+    print(model.predict(img))
+    faceNumLabel=np.argmax(model.predict(img))
+    if faceNumLabel == 0:
+        face = "olive"
+    elif faceNumLabel == 1:
+        face = "sio"
+    elif faceNumLabel == 2:
+        face = "syouyu"
+    elif faceNumLabel == 3:
+        face = "souce"
+    return face
+#####
+
 if __name__ == "__main__":
     get_text_by_ms(image_url)
+    detect_who(img)
