@@ -3,6 +3,4 @@ line-bot-sdk==1.8.0
 urllib3==1.23
 requests==2.19.1
 pillow
-numpy
-matplotlib
-keras
+opencv_python
