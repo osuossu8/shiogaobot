@@ -4,6 +4,6 @@ urllib3==1.23
 requests==2.19.1
 pillow
 opencv-python
-keras.models
 numpy
 matplotlib
+keras
