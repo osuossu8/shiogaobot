@@ -5,3 +5,4 @@ requests==2.19.1
 pillow
 opencv_python
 matplotlib
+keras
