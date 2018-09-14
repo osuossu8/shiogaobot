@@ -6,3 +6,4 @@ pillow
 opencv_python
 matplotlib
 keras
+tkinter
