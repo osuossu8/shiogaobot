@@ -78,9 +78,15 @@ def handle_image(event):
     message_content = line_bot_api.get_message_content(message_id)
 
     image = BytesIO(message_content.content)
+    ###
+    print(message_content)
+    image_url = 'https://api.line.me/v2/bot/message/' + id + '/content/'
+    print(image_url)
+
+    ###
 
     try:
-        image_text = get_text_by_ms(image=image)
+        image_text = get_text_by_ms(image_url=image_url,image=image)
 
         messages = [
             TextSendMessage(text=image_text),

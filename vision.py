@@ -43,7 +43,7 @@ def get_text_by_ms(image_url=None, image=None):
     print(image_url)
 
     model = load_model('./shiogao_model2.h5')
-    print(model.summary())
+    #print(model.summary())
     image = cv2.imread(image_url)
     if image is None:
         print("Not open")
@@ -83,4 +83,5 @@ def detect_who(img):
 #####
 
 if __name__ == "__main__":
-    get_text_by_ms(image_url)
+    #get_text_by_ms(image_url)
+    get_text_by_ms(image_url, image)
