@@ -81,22 +81,9 @@ def handle_image(event):
 
     try:
         image_text = get_text_by_ms(image=image)
-        ###
-        model = load_model('./shiogao_model2.h5')
-        print(model.summary())
-        image = cv2.imread(image_url)
-        if image is None:
-            print("Not open")
-        b,g,r = cv2.split(image)
-        image = cv2.merge([r,g,b])
-        img = cv2.resize(image,(64,64))
-        img=np.expand_dims(img,axis=0)
-        face = detect_who(img=img)
-        print(face)
-        ###
 
         messages = [
-            TextSendMessage(text=face),
+            TextSendMessage(text=image_text),
         ]
 
         reply_message(event, messages)
