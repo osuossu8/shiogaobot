@@ -87,7 +87,7 @@ def handle_image(event):
     ###
 
     try:
-        image_text = get_text_by_ms(image_url=image_url,image=image)
+        image_text = get_text_by_ms(image_url=getImageLine(message_id),image=image)
 
         messages = [
             TextSendMessage(text=image_text),
