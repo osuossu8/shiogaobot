@@ -16,7 +16,7 @@ import os
 import requests
 import json
 import io
-from io import BytesIO, StringIO
+from io import BytesIO
 from PIL import Image
 
 import settings
@@ -114,7 +114,7 @@ def getImageLine(id):
     print(result)
 
     # 画像の保存
-    i = Image.open(StringIO(result.content))
+    i = Image.open(BytesIO(result.content))
     filename = '/tmp/' + id + '.jpg'
     print(filename)
     i.save(filename)
