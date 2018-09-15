@@ -72,6 +72,7 @@ def get_text_by_ms(image_url=None, image=None):
 def detect_who(img):
     #予測
     print("** 4 **")
+    print(img)
     face=""
     print(model.predict(img))
     print("** 5 **")
