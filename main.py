@@ -81,8 +81,8 @@ def handle_image(event):
     ###
     image_url = 'https://api.line.me/v2/bot/message/' + message_id + '/content/'
     print(image_url)
-    getImageLine(image_url)
-    print(getImageLine(image_url))
+    getImageLine(message_id)
+    print(getImageLine(message_id))
 
     ###
 
@@ -105,10 +105,12 @@ def reply_message(event, messages):
     )
 
 ###
-def getImageLine(image_url):
+def getImageLine(id):
+
+    line_url = 'https://api.line.me/v2/bot/message/' + id + '/content/'
 
     # 画像の取得
-    result = requests.get(image_url, headers=header)
+    result = requests.get(line_url, headers=header)
 
     # 画像の保存
     i = Image.open(io.StringIO(result.content))
