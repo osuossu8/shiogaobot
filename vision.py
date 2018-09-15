@@ -25,19 +25,6 @@ def get_text_by_ms(image_url=None, image=None):
             headers=headers,
             json=data
         )
-        #####
-        model = load_model('./shiogao_model2.h5')
-        print(model.summary())
-        image = cv2.imread(image_url)
-        if image is None:
-            print("Not open")
-        b,g,r = cv2.split(image)
-        image = cv2.merge([r,g,b])
-        img = cv2.resize(image,(64,64))
-        img=np.expand_dims(img,axis=0)
-        face = detect_who(img=img)
-        print(face)
-        #####
 
     elif image is not None:
         headers = {
@@ -52,7 +39,21 @@ def get_text_by_ms(image_url=None, image=None):
     status = response.status_code
     data = response.json()
 
-    text = 'face'
+    #####
+    model = load_model('./shiogao_model2.h5')
+    print(model.summary())
+    image = cv2.imread(image_url)
+    if image is None:
+        print("Not open")
+    b,g,r = cv2.split(image)
+    image = cv2.merge([r,g,b])
+    img = cv2.resize(image,(64,64))
+    img=np.expand_dims(img,axis=0)
+    face = detect_who(img=img)
+    print(face)
+    #####
+
+    text = face
 
     if len(text) == 0:
         text += '文字が検出できませんでした'
