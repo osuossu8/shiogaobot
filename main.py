@@ -79,8 +79,8 @@ def handle_image(event):
 
     image = BytesIO(message_content.content)
     ###
-    print(message_content)
-    image_url = 'https://api.line.me/v2/bot/message/' + id + '/content/'
+    print(image)
+    image_url = 'https://api.line.me/v2/bot/message/' + str(id) + '/content/'
     print(image_url)
 
     ###
