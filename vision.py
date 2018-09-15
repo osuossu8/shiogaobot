@@ -40,18 +40,22 @@ def get_text_by_ms(image_url=None, image=None):
     data = response.json()
 
     #####
-    print(image_url)
+    #print(image_url)
 
     model = load_model('./shiogao_model2.h5')
     #print(model.summary())
+    print("** 1 **")
     image = cv2.imread(image_url)
     if image is None:
         print("Not open")
+    print("** 2 **")
     b,g,r = cv2.split(image)
     image = cv2.merge([r,g,b])
     img = cv2.resize(image,(64,64))
     img=np.expand_dims(img,axis=0)
+    print("** 3 **")
     face = detect_who(img=img)
+    print("** 4 **")
     print(face)
     #####
 
