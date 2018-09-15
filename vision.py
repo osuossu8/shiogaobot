@@ -68,13 +68,13 @@ def detect_who(img=None):
     print(model.predict(img))
     faceNumLabel=np.argmax(model.predict(img))
     if faceNumLabel == 0:
-        face = "olive"
+        face = "olive-face"
     elif faceNumLabel == 1:
-        face = "sio"
+        face = "sio-face"
     elif faceNumLabel == 2:
-        face = "syouyu"
+        face = "syouyu-face"
     elif faceNumLabel == 3:
-        face = "souce"
+        face = "souce-face"
     return face
 
 #####
