@@ -16,7 +16,7 @@ import os
 import requests
 import json
 import io
-from io import BytesIO
+from io import BytesIO, StringIO
 from PIL import Image
 
 import settings
