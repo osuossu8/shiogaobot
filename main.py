@@ -83,6 +83,7 @@ def handle_image(event):
         image_text = get_text_by_ms(image=image)
         ###
         model = load_model('./shiogao_model2.h5')
+        print(model.summary())
         image = cv2.imread(image_url)
         if image is None:
             print("Not open")
