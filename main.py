@@ -114,10 +114,10 @@ def getImageLine(id):
     print(result)
 
     # 画像の保存
-    #i = Image.open(StringIO(result.content))
+    i = Image.open(StringIO(result.content))
     filename = '/tmp/' + id + '.jpg'
     print(filename)
-    #i.save(filename)
+    i.save(filename)
 
     return filename
 ###
