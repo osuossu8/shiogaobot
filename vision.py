@@ -83,19 +83,18 @@ def detect_who(img=None):
         face = "souce"
     return face
 
-model = load_model('./shiogao_model2.h5')
-print(model.summary())
-image = cv2.imread(image_url)
-if image is None:
-    print("Not open")
-b,g,r = cv2.split(image)
-image = cv2.merge([r,g,b])
-img = cv2.resize(image,(64,64))
-img=np.expand_dims(img,axis=0)
-face = detect_who(img=img)
-print(face)
 #####
 
 if __name__ == "__main__":
     get_text_by_ms(image_url)
-    detect_who(img)
+    model = load_model('./shiogao_model2.h5')
+    print(model.summary())
+    image = cv2.imread(image_url)
+    if image is None:
+        print("Not open")
+    b,g,r = cv2.split(image)
+    image = cv2.merge([r,g,b])
+    img = cv2.resize(image,(64,64))
+    img=np.expand_dims(img,axis=0)
+    face = detect_who(img=img)
+    print(face)
