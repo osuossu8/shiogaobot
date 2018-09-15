@@ -14,7 +14,7 @@ LINE_API_ENDPOINT = "https://api.line.me/v2/bot/message/reply"
 def get_text_by_ms(image_url=None, image=None):
     if image_url is None and image is None:
         return '必要な情報が足りません'
-"""
+
     if image_url:
         headers = {
     "Content-Type": "application/json",
@@ -38,7 +38,7 @@ def get_text_by_ms(image_url=None, image=None):
 
     status = response.status_code
     data = response.json()
-"""
+
     #####
     print(image_url)
 
@@ -83,5 +83,4 @@ def detect_who(img):
 #####
 
 if __name__ == "__main__":
-    #get_text_by_ms(image_url)
-    get_text_by_ms(image_url, image)
+    get_text_by_ms(image_url)
