@@ -18,7 +18,6 @@ def get_text_by_ms(image_url=None, image=None):
     if image_url:
         headers = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer " + LINE_ACCESSTOKEN
     }
         data = {'url': image_url}
         response = requests.post(
@@ -30,7 +29,6 @@ def get_text_by_ms(image_url=None, image=None):
     elif image is not None:
         headers = {
     "Content-Type": "application/json",
-    "Authorization": "Bearer " + LINE_ACCESSTOKEN
     }
         response = requests.post(
             LINE_API_ENDPOINT,
@@ -40,23 +38,6 @@ def get_text_by_ms(image_url=None, image=None):
 
     status = response.status_code
     data = response.json()
-
-    if status != 200:
-
-        if data['code'] == 'InvalidImageSize':
-            text = '画像のサイズが大きすぎます'
-
-        elif data['code'] == 'InvalidImageUrl':
-            text = 'この画像URLからは取得できません'
-
-        elif data['code'] == 'InvalidImageFormat':
-            text = '対応していない画像形式です'
-
-        else:
-            text = 'エラーが発生しました'
-
-        print(status, data)
-        return text
 
     text = 'face'
 
