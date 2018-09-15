@@ -113,7 +113,7 @@ def getImageLine(id):
     result = requests.get(line_url, headers=header)
 
     # 画像の保存
-    i = Image.open(io.StringIO(result.content))
+    i = Image.open(StringIO(result.content))
     filename = '/tmp/' + id + '.jpg'
     i.save(filename)
 
