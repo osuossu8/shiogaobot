@@ -71,7 +71,8 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    model is None
+    model = None
+    print(model)
     if model is None:
         print("model is not loaded")
         model = load_model('./shiogao_model2.h5')
