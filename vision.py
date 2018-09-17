@@ -69,10 +69,11 @@ def get_text_by_ms(image_url=None, image=None):
 #####
 def detect_who(img):
     #予測
-    print("** 5 **")
-    print(img)
+    #print(img)
     face=""
-    model = load_model('./shiogao_model2.h5')
+    #model = load_model('./shiogao_model2.h5')
+    print("** 5 **")
+    get_model()
     print(model.summary())
     print("** 6 **")
     print(model.predict(img))
@@ -88,6 +89,10 @@ def detect_who(img):
         face = "ソース顔"
     return face
 #####
+
+def get_model():
+    model = load_model('./shiogao_model2.h5')
+    return model
 
 if __name__ == "__main__":
     get_text_by_ms(image_url)
