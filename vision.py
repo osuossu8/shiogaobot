@@ -71,7 +71,7 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    #model = load_model('./shiogao_model2.h5')
+    model = load_model('./shiogao_model2.h5')
     print(model.summary())
     print("** 6 **")
     print(model.predict(img))
@@ -89,5 +89,4 @@ def detect_who(img):
 #####
 
 if __name__ == "__main__":
-    model = load_model('./shiogao_model2.h5')
     get_text_by_ms(image_url)
