@@ -43,7 +43,6 @@ def get_text_by_ms(image_url=None, image=None):
 
     #####
     print("** 1 **")
-    model = load_model('./shiogao_model2.h5')
     print("** 2 **")
     image = cv2.imread(image_url)
     if image is None:
@@ -73,7 +72,7 @@ def detect_who(img):
     print("** 5 **")
     print(img)
     face=""
-    #model = load_model('./shiogao_model2.h5')
+    model = load_model('./shiogao_model2.h5')
     print(model.summary())
     print("** 6 **")
     print(model.predict(img))
