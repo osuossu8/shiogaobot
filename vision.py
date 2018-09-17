@@ -82,15 +82,13 @@ def detect_who(img):
     print("** 7 **")
     faceNumLabel=np.argmax(model.predict(img))
     if faceNumLabel == 0:
-        #face = "olive-face"
         face = "オリーブオイル顔"
     elif faceNumLabel == 1:
-        face = "sio-face"
+        face = "塩顔"
     elif faceNumLabel == 2:
-        #face = "syouyu-face"
         face = "しょうゆ顔"
     elif faceNumLabel == 3:
-        face = "souce-face"
+        face = "ソース顔"
     return face
 #####
 
