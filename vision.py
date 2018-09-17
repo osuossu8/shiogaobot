@@ -55,7 +55,7 @@ def get_text_by_ms(image_url=None, image=None):
     img=np.expand_dims(img,axis=0)
     print("** 3 **")
     face = detect_who(img=img)
-    print("** 6 **")
+    print("** 7 **")
     print(face)
     #####
 
@@ -74,8 +74,10 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    print(model.predict(img))
+    print(model.summary())
     print("** 5 **")
+    print(model.predict(img))
+    print("** 6 **")
     faceNumLabel=np.argmax(model.predict(img))
     if faceNumLabel == 0:
         face = "olive-face"
