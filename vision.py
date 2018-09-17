@@ -86,7 +86,6 @@ def detect_who(img):
         face = "しょうゆ顔"
     elif faceNumLabel == 3:
         face = "ソース顔"
-    model = None
     return face
 #####
 
