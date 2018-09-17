@@ -73,8 +73,7 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    print("** 5 **")
-    model = null   
+    print("** 5 **") 
     model = load_model('./shiogao_model2.h5', compile=False)
     print(model.summary())
     print("** 6 **")
