@@ -71,11 +71,8 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    if model is None:
-        print("model is not loaded")
-        model = load_model('./shiogao_model2.h5')
-    else:
-        print("model is already loaded")
+    print(model)
+    model = load_model('./shiogao_model2.h5')
     print(model.summary())
     print("** 6 **")
     print(model.predict(img))
@@ -89,6 +86,7 @@ def detect_who(img):
         face = "しょうゆ顔"
     elif faceNumLabel == 3:
         face = "ソース顔"
+    model = None
     return face
 #####
 
