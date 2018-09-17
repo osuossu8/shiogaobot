@@ -11,6 +11,12 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 #LINEBotのキーを設定
 LINE_API_ENDPOINT = "https://api.line.me/v2/bot/message/reply"
 
+print("** a **")
+model = load_model('./shiogao_model2.h5')
+print("** b **")
+print(model.summary())
+print("** c **")
+
 def get_text_by_ms(image_url=None, image=None):
     if image_url is None and image is None:
         return '必要な情報が足りません'
