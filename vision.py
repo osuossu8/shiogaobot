@@ -42,7 +42,7 @@ def get_text_by_ms(image_url=None, image=None):
     #####
     #print(image_url)
 
-    model = load_model('./shiogao_model2.h5')
+    #model = load_model('./shiogao_model2.h5')
     #print(model.summary())
     print("** 1 **")
     image = cv2.imread(image_url)
@@ -55,7 +55,7 @@ def get_text_by_ms(image_url=None, image=None):
     img=np.expand_dims(img,axis=0)
     print("** 3 **")
     face = detect_who(img=img)
-    print("** 7 **")
+    print("** 8 **")
     print(face)
     #####
 
@@ -74,10 +74,12 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    print(model.summary())
+    model = load_model('./shiogao_model2.h5')
     print("** 5 **")
-    print(model.predict(img))
+    print(model.summary())
     print("** 6 **")
+    print(model.predict(img))
+    print("** 7 **")
     faceNumLabel=np.argmax(model.predict(img))
     if faceNumLabel == 0:
         face = "olive-face"
@@ -92,4 +94,6 @@ def detect_who(img):
 #####
 
 if __name__ == "__main__":
+    print("** a **")
     get_text_by_ms(image_url)
+    print("** b **")
