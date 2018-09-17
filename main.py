@@ -84,13 +84,6 @@ def handle_image(event):
     getImageLine(message_id)
     print(getImageLine(message_id))
     ###
-    #####
-    print("** a **")
-    model = load_model('./shiogao_model2.h5')
-    print("** b **")
-    print(model.summary())
-    print("** c **")
-    #####
 
     try:
         image_text = get_text_by_ms(image_url=getImageLine(message_id),image=image)
@@ -133,3 +126,10 @@ if __name__ == "__main__":
     #    app.run()
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+    #####
+    print("** a **")
+    model = load_model('./shiogao_model2.h5')
+    print("** b **")
+    print(model.summary())
+    print("** c **")
+    #####
