@@ -42,10 +42,6 @@ def get_text_by_ms(image_url=None, image=None):
     data = response.json()
 
     #####
-    #print(image_url)
-
-    #model = load_model('./shiogao_model2.h5')
-    #print(model.summary())
     print("** 1 **")
     image = cv2.imread(image_url)
     if image is None:
@@ -75,8 +71,8 @@ def detect_who(img):
     print("** 4 **")
     print(img)
     face=""
-    model = load_model('./shiogao_model2.h5', compile=False)
-    print(model.summary())
+    #model = load_model('./shiogao_model2.h5', compile=False)
+    #print(model.summary())
     print("** 6 **")
     print(model.predict(img))
     print("** 7 **")

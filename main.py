@@ -56,6 +56,14 @@ def callback():
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
+    #####
+    print("** a **")
+    model = load_model('./shiogao_model2.h5', compile=False)
+    print("** b **")
+    print(model.summary())
+    print("** c **")
+    #####
+
     # handle webhook body
     try:
         handler.handle(body, signature)
@@ -83,7 +91,6 @@ def handle_image(event):
     print(image_url)
     getImageLine(message_id)
     print(getImageLine(message_id))
-
     ###
 
     try:
