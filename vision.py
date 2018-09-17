@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import requests
 import settings
 import os
@@ -80,7 +82,8 @@ def detect_who(img):
     print("** 7 **")
     faceNumLabel=np.argmax(model.predict(img))
     if faceNumLabel == 0:
-        face = "olive-face"
+        #face = "olive-face"
+        face = "オリーブオイル顔"
     elif faceNumLabel == 1:
         face = "sio-face"
     elif faceNumLabel == 2:
