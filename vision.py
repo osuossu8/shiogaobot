@@ -87,7 +87,8 @@ def detect_who(img):
     elif faceNumLabel == 1:
         face = "sio-face"
     elif faceNumLabel == 2:
-        face = "syouyu-face"
+        #face = "syouyu-face"
+        face = "しょうゆ顔"
     elif faceNumLabel == 3:
         face = "souce-face"
     return face
