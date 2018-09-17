@@ -125,5 +125,10 @@ def getImageLine(id):
 
 if __name__ == "__main__":
 #    app.run()
+    print("** a **")
+    model = load_model('./shiogao_model2.h5')
+    print("** b **")
+    print(model.summary())
+    print("** c **")
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
