@@ -58,7 +58,7 @@ def callback():
 
     #####
     print("** a **")
-    model = load_model('./shiogao_model2.h5', compile=False)
+    model = load_model('./shiogao_model2.h5')
     print("** b **")
     print(model.summary())
     print("** c **")
