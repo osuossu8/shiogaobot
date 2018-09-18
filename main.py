@@ -91,6 +91,7 @@ def handle_image(event):
     try:
         #####
         print("** c **")
+        print(counter)
         global counter
         counter += 1
         print(counter)
