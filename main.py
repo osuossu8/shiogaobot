@@ -46,7 +46,7 @@ header = {
 }
 
 print("** a **")
-counter = 0 #counter
+model = load_model('./shiogao_model2.h5')
 print("** b **")
 #####
 
@@ -89,15 +89,6 @@ def handle_image(event):
     ###
 
     try:
-        #####
-        print("** c **")
-        global counter
-        print(counter)
-        counter += 1
-        print(counter)
-        print("** d **")
-        #####
-
         image_text = get_text_by_ms(image_url=getImageLine(message_id),image=image)
 
         messages = [
