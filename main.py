@@ -122,7 +122,7 @@ def getImageLine(id):
 ###
 
 ####
-global some_queue = None
+some_queue = None
 
 @app.route('/restart')
 def restart():
