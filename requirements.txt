@@ -6,6 +6,5 @@ pillow
 keras
 opencv-python
 tensorflow
-time
 subprocess
 multiprocessing
