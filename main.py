@@ -132,10 +132,10 @@ some_queue = None
 def restart():
     try:
         some_queue.put("something")
-        print "Restarted successfully"
+        print("Restarted successfully")
         return "Quit"
     except:
-        print "Failed in restart"
+        print("Failed in restart")
         return "Failed"
 
 
