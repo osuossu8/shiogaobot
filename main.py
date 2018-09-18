@@ -39,10 +39,6 @@ header = {
     "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
 }
 
-print("** a **")
-#model = load_model('./shiogao_model2.h5')
-#print(model.summary)
-print("** b **")
 #####
 
 @app.route("/callback", methods=['POST'])

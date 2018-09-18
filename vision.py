@@ -42,19 +42,16 @@ def get_text_by_ms(image_url=None, image=None):
     data = response.json()
 
     #####
-    print("** 1 **")
-    print("** 2 **")
     image = cv2.imread(image_url)
     if image is None:
         print("Not open")
-    print("** 3 **")
     b,g,r = cv2.split(image)
     image = cv2.merge([r,g,b])
     img = cv2.resize(image,(64,64))
     img=np.expand_dims(img,axis=0)
-    print("** 4 **")
+    print("** 1 **")
     face = detect_who(img=img)
-    print("** 9 **")
+    print("** 6 **")
     print(face)
     #####
 
@@ -71,14 +68,17 @@ def detect_who(img):
     #予測
     #print(img)
     face=""
-    print("** 5 **")
+    print("** 2 **")
+    model = None
+    print(model)
     model = load_model('./shiogao_model2.h5')
+    print(model)
     #print(model.summary())
-    print("** 6 **")
+    print("** 3 **")
     predict = model.predict(img)
-    print("** 7 **")
+    print("** 4 **")
     #print(predict)
-    print("** 8 **")
+    print("** 5 **")
     faceNumLabel=np.argmax(predict)
     if faceNumLabel == 0:
         face = "オリーブオイル顔"
