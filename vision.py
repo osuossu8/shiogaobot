@@ -72,12 +72,12 @@ def detect_who(img):
     #print(img)
     face=""
     print("** 5 **")
-    #model = load_model('./shiogao_model2.h5')
+    model = load_model('./shiogao_model2.h5')
     #print(model.summary())
     print("** 6 **")
     predict = model.predict(img)
     print("** 7 **")
-    print(predict)
+    #print(predict)
     print("** 8 **")
     faceNumLabel=np.argmax(predict)
     if faceNumLabel == 0:

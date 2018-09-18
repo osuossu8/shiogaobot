@@ -34,20 +34,14 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
-#####
-@app.route("/hello")
-def hello_world():
-    return "hello world!"
-
-#####
 header = {
     "Content-Type": "application/json",
     "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
 }
 
 print("** a **")
-model = load_model('./shiogao_model2.h5')
-print(model.summary)
+#model = load_model('./shiogao_model2.h5')
+#print(model.summary)
 print("** b **")
 #####
 
