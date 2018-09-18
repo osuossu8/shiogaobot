@@ -67,12 +67,14 @@ def get_text_by_ms(image_url=None, image=None):
 def detect_who(img):
     #予測
     #print(img)
+    counter = 0
     face=""
     print("** 2 **")
-    model = None
+    global model
     print(model)
-    model = load_model('./shiogao_model2.h5')
-    print(model)
+    if model is None:
+        model = load_model('./shiogao_model2.h5')
+        print(model)
     #print(model.summary())
     print("** 3 **")
     predict = model.predict(img)

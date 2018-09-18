@@ -39,6 +39,7 @@ header = {
     "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
 }
 
+model = None
 #####
 
 @app.route("/callback", methods=['POST'])
