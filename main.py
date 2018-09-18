@@ -39,7 +39,10 @@ header = {
     "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
 }
 
+print("** a **")
 model = None
+print(model)
+print("** b **")
 #####
 
 @app.route("/callback", methods=['POST'])

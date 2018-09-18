@@ -51,7 +51,7 @@ def get_text_by_ms(image_url=None, image=None):
     img=np.expand_dims(img,axis=0)
     print("** 1 **")
     face = detect_who(img=img)
-    print("** 6 **")
+    print("** 7**")
     print(face)
     #####
 
@@ -70,17 +70,19 @@ def detect_who(img):
     counter = 0
     face=""
     print("** 2 **")
-    global model
+    #global model
+    model = main.model
+    print("** 3 **")
     print(model)
     if model is None:
         model = load_model('./shiogao_model2.h5')
         print(model)
     #print(model.summary())
-    print("** 3 **")
-    predict = model.predict(img)
     print("** 4 **")
-    #print(predict)
+    predict = model.predict(img)
     print("** 5 **")
+    #print(predict)
+    print("** 6 **")
     faceNumLabel=np.argmax(predict)
     if faceNumLabel == 0:
         face = "オリーブオイル顔"
