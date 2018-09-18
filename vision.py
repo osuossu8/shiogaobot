@@ -7,13 +7,16 @@ import numpy as np
 import cv2
 from keras.models import load_model
 
-import main
-
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
 #LINEBotのキーを設定
 LINE_API_ENDPOINT = "https://api.line.me/v2/bot/message/reply"
+
+print("** a **")
+model = None
+print(model)
+print("** b **")
 
 def get_text_by_ms(image_url=None, image=None):
     if image_url is None and image is None:
@@ -72,8 +75,7 @@ def detect_who(img):
     counter = 0
     face=""
     print("** 2 **")
-    #global model
-    model = main.model
+    global model
     print("** 3 **")
     print(model)
     if model is None:
