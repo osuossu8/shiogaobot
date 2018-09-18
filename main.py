@@ -94,13 +94,6 @@ def handle_image(event):
 
         reply_message(event, messages)
 
-        ###
-        print("** a **")
-        model = model.reset_states()
-        print(model.summary())
-        print("** b **")
-        ###
-
     except Exception as e:
         reply_message(event, TextSendMessage(text='エラーが発生しました'))
 
@@ -128,7 +121,35 @@ def getImageLine(id):
     return filename
 ###
 
+####
+global some_queue = None
+
+@app.route('/restart')
+def restart():
+   try:
+     some_queue.put("something")
+     return "Quit"
+
+def start_flaskapp(queue):
+   some_queue = queue
+   app.run(host="0.0.0.0", port=port)
+####
+
 if __name__ == "__main__":
     #    app.run()
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
+    ####
+    q = Queue()
+    p = Process(target=start_flaskapp, args=[q,])
+    p.start()
+    while True: #wathing queue, sleep if there is no call, otherwise break
+        if q.empty():
+            time.sleep(1)
+        else:
+            break
+    p.terminate() #terminate flaskapp and then restart the app on subprocess
+    args = [sys.executable] + [sys.argv[0]]
+    subprocess.call(args)
+    ####
