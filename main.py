@@ -46,6 +46,19 @@ header = {
 }
 
 #####
+####
+some_queue = None
+
+@app.route('/restart')
+def restart():
+    try:
+        some_queue.put("something")
+        return "Quit"
+
+def start_flaskapp(queue):
+    some_queue = queue
+    app.run(host="0.0.0.0", port=port)
+####
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -120,20 +133,6 @@ def getImageLine(id):
 
     return filename
 ###
-
-####
-some_queue = None
-
-@app.route('/restart')
-def restart():
-    try:
-        some_queue.put("something")
-        return "Quit"
-
-def start_flaskapp(queue):
-    some_queue = queue
-    app.run(host="0.0.0.0", port=port)
-####
 
 if __name__ == "__main__":
     #    app.run()
