@@ -6,5 +6,3 @@ pillow
 keras
 opencv-python
 tensorflow
-subprocess
-multiprocessing
