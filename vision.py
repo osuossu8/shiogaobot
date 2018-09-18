@@ -72,6 +72,7 @@ def detect_who(img):
     #print(img)
     face=""
     print("** e **")
+    global counter
     print(counter)
     print("** f **")
     model = load_model('./shiogao_model2.h5')
