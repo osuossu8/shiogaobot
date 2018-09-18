@@ -86,6 +86,13 @@ def handle_image(event):
     ###
 
     try:
+        #####
+        print("** a **")
+        counter += 1
+        print(counter)
+        print("** b **")
+        #####
+
         image_text = get_text_by_ms(image_url=getImageLine(message_id),image=image)
 
         messages = [
@@ -125,3 +132,4 @@ if __name__ == "__main__":
     #    app.run()
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+    global counter = 0 #counter
