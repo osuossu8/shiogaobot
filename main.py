@@ -94,6 +94,13 @@ def handle_image(event):
 
         reply_message(event, messages)
 
+        ###
+        print("** a **")
+        model = model.reset_states()
+        print(model.summary())
+        print("** b **")
+        ###
+
     except Exception as e:
         reply_message(event, TextSendMessage(text='エラーが発生しました'))
 
