@@ -45,6 +45,9 @@ header = {
     "Authorization": "Bearer " + YOUR_CHANNEL_ACCESS_TOKEN
 }
 
+print("** a **")
+counter = 0 #counter
+print("** b **")
 #####
 
 @app.route("/callback", methods=['POST'])
@@ -87,10 +90,10 @@ def handle_image(event):
 
     try:
         #####
-        print("** a **")
-        global counter += 1
+        print("** c **")
+        counter += 1
         print(counter)
-        print("** b **")
+        print("** d **")
         #####
 
         image_text = get_text_by_ms(image_url=getImageLine(message_id),image=image)
@@ -132,4 +135,3 @@ if __name__ == "__main__":
     #    app.run()
     port = int(os.getenv("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-    counter = 0 #counter
