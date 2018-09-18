@@ -126,13 +126,13 @@ some_queue = None
 
 @app.route('/restart')
 def restart():
-   try:
-     some_queue.put("something")
-     return "Quit"
+    try:
+        some_queue.put("something")
+        return "Quit"
 
 def start_flaskapp(queue):
-   some_queue = queue
-   app.run(host="0.0.0.0", port=port)
+    some_queue = queue
+    app.run(host="0.0.0.0", port=port)
 ####
 
 if __name__ == "__main__":
