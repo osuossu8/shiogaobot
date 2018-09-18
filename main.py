@@ -26,10 +26,6 @@ import numpy as np
 import cv2
 from keras.models import load_model
 
-import time
-import subprocess
-from multiprocessing import Process, Queue
-
 app = Flask(__name__)
 
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
@@ -125,42 +121,7 @@ def getImageLine(id):
     return filename
 ###
 
-####
-some_queue = None
-
-@app.route('/restart')
-def restart():
-    try:
-        some_queue.put("something")
-        print("Restarted successfully")
-        return "Quit"
-    except:
-        print("Failed in restart")
-        return "Failed"
-
-
-def start_flaskapp(queue):
-    global some_queue
-    some_queue = queue
-    port = int(os.getenv("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-####
-
 if __name__ == "__main__":
     #    app.run()
-    #port = int(os.getenv("PORT", 5000))
-    #app.run(host="0.0.0.0", port=port)
-
-    ####
-    q = Queue()
-    p = Process(target=start_flaskapp, args=[q,])
-    p.start()
-    while True: #wathing queue, sleep if there is no call, otherwise break
-        if q.empty():
-            time.sleep(1)
-        else:
-            break
-    p.terminate() #terminate flaskapp and then restart the app on subprocess
-    args = [sys.executable] + [sys.argv[0]]
-    subprocess.call(args)
-    ####
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
