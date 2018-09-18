@@ -47,6 +47,7 @@ header = {
 
 print("** a **")
 model = load_model('./shiogao_model2.h5')
+print(model.summary)
 print("** b **")
 #####
 
