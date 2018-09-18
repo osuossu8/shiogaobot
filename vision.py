@@ -7,6 +7,8 @@ import numpy as np
 import cv2
 from keras.models import load_model
 
+import main
+
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
